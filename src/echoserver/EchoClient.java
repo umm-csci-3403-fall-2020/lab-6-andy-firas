@@ -46,7 +46,7 @@ public class EchoClient {
 					System.out.write(inputByte);
 					System.out.flush();
 				}
-				sock.shutdownOutput();
+				sock.close();
 			} catch (IOException ioe) {
 				System.out.println("We caught an exception");
 				System.out.println(ioe);
