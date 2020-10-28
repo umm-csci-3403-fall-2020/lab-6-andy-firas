@@ -23,8 +23,8 @@ public class EchoClient {
 		Thread threadReader = new Thread(reader);
 		Thread threadWriter = new Thread(writer);
 
-		threadReader.start();
 		threadWriter.start();
+		threadReader.start();
 
 	}
 
@@ -72,7 +72,7 @@ public class EchoClient {
 					output.write(outputByte);
 					output.flush();
 				}
-				sock.shutdownInput();
+				sock.shutdownOutput();
 			} catch (IOException ioe) {
 				System.out.println("We caught an exception");
 				System.out.println(ioe);
