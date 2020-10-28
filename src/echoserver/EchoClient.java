@@ -20,11 +20,11 @@ public class EchoClient {
 
 		InputReader reader = new InputReader(socket);
 		OutputWriter writer = new OutputWriter(socket);
-		ThreadReader treader = new ThreadReader(reader);
-		ThreadWriter twriter = new ThreadWriter(writer);
+		Thread threadReader = new Thread(reader);
+		Thread threadWriter = new Thread(writer);
 
-		treader.start();
-		twriter.start();
+		threadReader.start();
+		threadWriter.start();
 
 	}
 
@@ -46,7 +46,7 @@ public class EchoClient {
 					System.out.write(inputByte);
 					System.out.flush();
 				}
-				sock.close();
+				sock.shutdownOutput();
 			} catch (IOException ioe) {
 				System.out.println("We caught an exception");
 				System.out.println(ioe);
